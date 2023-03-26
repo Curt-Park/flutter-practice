@@ -46,8 +46,10 @@ class _NewTransactionState extends State<NewTransaction> {
               keyboardType: TextInputType.number,
             ),
             TextButton(
-              child: Text('Add Transaction',
-                  style: TextStyle(color: Colors.purple)),
+              child: Text(
+                'Add Transaction',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               onPressed: submitData,
             ),
           ],
