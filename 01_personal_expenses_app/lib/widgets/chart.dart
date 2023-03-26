@@ -40,21 +40,28 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
-      child: Row(
-        children: groupedTransactionValues.map((data) {
-          double ratio;
-          var totalSum = totalSpending;
-          if (totalSum == 0) {
-            ratio = 0.0;
-          } else {
-            ratio = (data['amount'] as double) / totalSpending;
-          }
-          return ChartBar(
-            (data['day'] as String),
-            (data['amount'] as double),
-            ratio,
-          );
-        }).toList(),
+      child: Container(
+        padding: EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedTransactionValues.map((data) {
+            double ratio;
+            var totalSum = totalSpending;
+            if (totalSum == 0) {
+              ratio = 0.0;
+            } else {
+              ratio = (data['amount'] as double) / totalSpending;
+            }
+            return Flexible(
+              fit: FlexFit.tight,
+              child: ChartBar(
+                (data['day'] as String),
+                (data['amount'] as double),
+                ratio,
+              ),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
